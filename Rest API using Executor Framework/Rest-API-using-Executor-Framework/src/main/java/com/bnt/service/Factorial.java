@@ -7,16 +7,17 @@ public class Factorial implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(Factorial.class);
 
-    private int number;
+    int number;
+    Integer result;
 
     public Factorial(int number) {
         this.number = number;
     }
 
-    @Override
-    public void run() {
+    public int getFactorial(Integer result){
+        int factorial = 1;
         try {
-            int factorial = 1;
+            factorial = 1;
             for (int i = 1; i <= number; i++) {
                 factorial *= i;
             }
@@ -25,6 +26,12 @@ public class Factorial implements Runnable {
         } catch (Exception e) {
             logger.error("Exception occurred while calculating factorial for " + number + ": " + e.getMessage());
         }
+        return factorial;
+    }
+
+    @Override
+    public void run() {
+        getFactorial(result);
     }
     
 }

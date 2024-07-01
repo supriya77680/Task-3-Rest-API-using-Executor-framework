@@ -8,13 +8,13 @@ public class Armstrong implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(Armstrong.class);
 
     int number;
+    String result;
 
     public Armstrong(int number) {
         this.number = number;
     }
 
-    @Override
-    public void run() {
+    public String getArmstrong(String result){
         try {
             int originalNumber = number;
             int sum = 0;
@@ -35,6 +35,12 @@ public class Armstrong implements Runnable {
         } catch (Exception e) {
             logger.error("Exception occurred while checking Armstrong number for " + number + ": " + e.getMessage());
         }
+        return "Result of Armstrong is out";
+    }
+
+    @Override
+    public void run() {
+     getArmstrong(result);
     }
     
 }

@@ -4,23 +4,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Square implements Runnable{
+    
+    public static final Logger logger = LoggerFactory.getLogger(Square.class);
 
-        public static final Logger logger = LoggerFactory.getLogger(Square.class);
+    Integer result;
+    int number;
 
-        int number;
+    public Square(int number) {
+        this.number = number;
+    }
+    
+        public Integer getSquareResult(Integer result){  
 
-        public Square(int number) {
-            this.number = number;
+            try {
+                logger.info("Square of number " + number + " is: " + result + " (Thread: " + Thread.currentThread().getName() + ")");
+
+            } catch (Exception e) {
+                logger.error("Exception occurred while calculating square for number " + number, e);
+            }
+            return result*result;
         }
 
         @Override
         public void run() {
-            try {
-                int result = number * number;
-                logger.info("Square of number " + number + " is: " + result + " (Thread: " + Thread.currentThread().getName() + ")");
-            } catch (Exception e) {
-                logger.error("Exception occurred while calculating square for number " + number, e);
-            }
+           getSquareResult(result);
         }
         
     }

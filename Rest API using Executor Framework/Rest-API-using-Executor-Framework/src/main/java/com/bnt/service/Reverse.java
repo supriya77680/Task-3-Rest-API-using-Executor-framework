@@ -8,15 +8,16 @@ public class Reverse implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(Reverse.class);
 
     int number;
+   Integer result;
 
     public Reverse(int number) {
         this.number = number;
     }
 
-    @Override
-    public void run() {
+    public int getReverse(Integer result) {
+        int reversed = 0;
         try {
-            int reversed = 0;
+            reversed = 0;
             
             int originalNumber = number;
             while (number != 0) {
@@ -29,6 +30,13 @@ public class Reverse implements Runnable {
         } catch (Exception e) {
             logger.error("Exception occurred while calculating reverse of number " + number + ": " + e.getMessage());
         }
+        return reversed;
+    }
+
+    @Override
+    public void run() {
+        getReverse(result);
+       
     }
     
 }

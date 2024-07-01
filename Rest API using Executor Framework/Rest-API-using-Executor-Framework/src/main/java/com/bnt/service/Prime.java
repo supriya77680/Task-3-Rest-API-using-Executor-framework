@@ -8,15 +8,17 @@ public class Prime implements Runnable {
     public static final Logger logger = LoggerFactory.getLogger(Prime.class);
 
     int number;
+    Integer result;
 
     public Prime(int number) {
         this.number = number;
     }
 
-    @Override
-    public void run() {
+    public Boolean getPrime(Integer result){
+        
         try {
             boolean isPrime = true;
+             isPrime = true;
             
             if (number <= 1) {
                 isPrime = false;
@@ -38,6 +40,13 @@ public class Prime implements Runnable {
         } catch (Exception e) {
             logger.error("Exception occurred during prime check for number " + number + ": " + e.getMessage());
         }
+        return true;
     }
+
+
+    @Override
+    public void run() {
+        getPrime(result);
+}
 }
     
